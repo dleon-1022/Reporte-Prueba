@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reporte</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --header:#9ca3af;
+      --link:#2563eb;
+      --ok:#0ea5a5; /* teal */
+      --shadow: 0 10px 24px rgba(17,24,39,.06);
+      --radius:14px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:var(--bg);
+      color:var(--text);
+    }
+    .wrap{ max-width:1080px; margin:0 auto; padding:28px 18px 60px; }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; margin-bottom:18px;
+    }
+    .brand{
+      font-size:20px; font-weight:900; letter-spacing:.2px;
+    }
+    .tabs{
+      display:flex; gap:10px; align-items:center;
+    }
+    .tab{
+      border:none;
+      background:transparent;
+      color:var(--muted);
+      font-weight:900;
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+    }
+    .tab[aria-selected="true"]{
+      background:var(--card);
+      color:var(--text);
+      box-shadow: var(--shadow);
+      border:1px solid var(--line);
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* SUMMARY */
+    .catBlock{ margin:16px 0 26px; }
+    .catHead{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:14px 16px 10px;
+    }
+    .catTitle{ font-weight:900; }
+    .catScore{ color:var(--muted); font-size:13px; }
+    .catScore b{ color:var(--text); font-size:14px; }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
+    thead th{
+      background: var(--header);
+      color:#fff;
+      font-size:12px;
+      letter-spacing:.2px;
+      text-align:left;
+      padding:10px 12px;
+    }
+    thead th:nth-child(3), thead th:nth-child(4){ text-align:right; }
+    tbody td{
+      padding:12px 12px;
+      border-top:1px solid var(--line);
+      vertical-align:top;
+    }
+    tbody td:nth-child(3), tbody td:nth-child(4){ text-align:right; white-space:nowrap; }
+    .rowBtn{
+      cursor:pointer;
+    }
+    .rowBtn:hover td{ background:#f9fafb; }
+    .desc{
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .check{
+      width:22px; height:22px; border-radius:999px; flex:0 0 auto;
+      background:var(--ok);
+      display:grid; place-items:center;
+      margin-top:2px;
+    }
+    .check svg{ width:14px; height:14px; fill:#fff; }
+    .nameLine{
+      font-weight:900;
+      color:var(--link);
+      text-decoration:none;
+    }
+    .nameLine:hover{ text-decoration:underline; }
+    .crumb{
+      color:var(--muted); font-size:12px;
+      margin-left:6px;
+    }
+    .subLine{
+      color:var(--text);
+      font-size:13px;
+      margin-top:4px;
+    }
+
+    /* DETAIL */
+    .detailTop{
+      padding:18px 18px 6px;
+    }
+    .detailLabel{
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:4px;
+    }
+    .detailTitle{
+      font-size:30px;
+      font-weight:1000;
+      margin:0 0 8px;
+      line-height:1.1;
+    }
+    .pctRow{
+      display:flex; align-items:flex-end; gap:10px;
+      margin:8px 0 10px;
+    }
+    .pctBig{
+      display:flex; align-items:center; gap:10px;
+      font-size:36px;
+      font-weight:1000;
+      color:var(--ok);
+    }
+    .pctBig .check{ width:28px; height:28px; }
+    .pctMeta{
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:8px;
+    }
+
+    .stats{
+      display:flex; gap:22px; flex-wrap:wrap;
+      justify-content:center;
+      padding:14px 16px 18px;
+      border-top:1px solid var(--line);
+    }
+    .stat{
+      min-width:140px;
+      text-align:center;
+    }
+    .stat .t{ color:var(--muted); font-size:12px; }
+    .stat .v{ font-weight:1000; font-size:28px; margin-top:4px; }
+
+    .section{
+      padding:18px;
+      border-top:1px solid var(--line);
+    }
+    .section h3{
+      margin:0 0 10px;
+      font-size:16px;
+      font-weight:1000;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+    }
+    @media (max-width: 980px){ .cards{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media (max-width: 560px){ .cards{ grid-template-columns:1fr; } }
+
+    .tile{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      box-shadow: 0 8px 18px rgba(17,24,39,.05);
+      min-height:86px;
+    }
+    .dt{ font-weight:900; font-size:13px; }
+    .tile a{
+      display:inline-block;
+      margin-top:6px;
+      color:var(--link);
+      text-decoration:none;
+      font-size:13px;
+      font-weight:700;
+    }
+    .tile a:hover{ text-decoration:underline; }
+    .obs{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+
+    .btnBack{
+      border:1px solid var(--line);
+      background:var(--card);
+      color:var(--text);
+      font-weight:900;
+      border-radius:12px;
+      padding:10px 12px;
+      cursor:pointer;
+      box-shadow: var(--shadow);
+    }
+    .btnBack:hover{ background:#f9fafb; }
+
+    .empty{
+      color:var(--muted);
+      font-size:13px;
+      padding:10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">Reporte</div>
+      <div class="tabs" role="tablist" aria-label="Vistas">
+        <button class="tab" id="tSummary" role="tab" aria-selected="true">Resumen</button>
+        <button class="tab" id="tDetail" role="tab" aria-selected="false" disabled>Detalle</button>
+      </div>
+    </div>
+
+    <!-- SUMMARY VIEW -->
+    <div id="vSummary" role="tabpanel" aria-labelledby="tSummary"></div>
+
+    <!-- DETAIL VIEW -->
+    <div id="vDetail" role="tabpanel" aria-labelledby="tDetail" style="display:none;">
+      <div style="margin-bottom:12px;">
+        <button class="btnBack" id="backBtn">← Volver a Resumen</button>
+      </div>
+
+      <div class="card" id="detailCard">
+        <div class="detailTop">
+          <div class="detailLabel" id="dCat">Categoría: —</div>
+          <h2 class="detailTitle" id="dName">—</h2>
+
+          <div class="pctRow">
+            <div class="pctBig">
+              <span class="check" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+              </span>
+              <span id="dPct">—</span>
+            </div>
+            <div class="pctMeta">meta: <span id="dGoal">90%</span></div>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="t">Muestras Aprobadas</div>
+            <div class="v" id="dPass">—</div>
+          </div>
+          <div class="stat">
+            <div class="t">Muestras Totales</div>
+            <div class="v" id="dTotal">—</div>
+          </div>
+          <div class="stat">
+            <div class="t">Muestras Fallidas</div>
+            <div class="v" id="dFail">—</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Muestras Aprobadas</h3>
+          <div id="passCards" class="cards"></div>
+        </div>
+
+        <div class="section">
+          <h3>Muestras Fallidas</h3>
+          <div id="failCards" class="cards"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const SUMMARY_URL = 'data-1772572820368.csv'; // Resumen (termina 368)
+  const DETAIL_URL  = 'data-1772572854532.csv'; // Incidentes/Muestras (termina 532)
+  const CSV_SEP = ','; // tus CSV están con coma
+
+  // ------- CSV parser (soporta comillas) -------
+  function parseCSV(text, sep) {
+    const rows = [];
+    let i = 0, field = '', row = [], inQuotes = false;
+    const s = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+
+    while (i < s.length) {
+      const c = s[i];
+      if (inQuotes) {
+        if (c === '"') {
+          if (s[i + 1] === '"') { field += '"'; i += 2; continue; }
+          inQuotes = false; i++; continue;
+        }
+        field += c; i++; continue;
+      }
+      if (c === '"') { inQuotes = true; i++; continue; }
+      if (c === sep) { row.push(field); field = ''; i++; continue; }
+      if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; i++; continue; }
+      field += c; i++;
+    }
+    row.push(field); rows.push(row);
+
+    const cleaned = rows.filter(r => r.some(v => (v ?? '').trim() !== ''));
+    if (cleaned.length === 0) return [];
+    const headers = cleaned[0].map(h => (h ?? '').trim().replace(/^"|"$/g,''));
+    const out = [];
+    for (let r = 1; r < cleaned.length; r++) {
+      const obj = {};
+      for (let c = 0; c < headers.length; c++) obj[headers[c]] = (cleaned[r][c] ?? '').trim().replace(/^"|"$/g,'');
+      out.push(obj);
+    }
+    return out;
+  }
+
+  function toBool(v){
+    if (typeof v === 'boolean') return v;
+    const x = String(v ?? '').trim().toLowerCase();
+    return (x === 'true' || x === '1' || x === 't' || x === 'yes');
+  }
+  function n(v){
+    const x = Number(v);
+    return Number.isFinite(x) ? x : 0;
+  }
+  function pct(a,b){
+    if (!b) return 0;
+    return Math.round((a/b)*100);
+  }
+  function fmtDT(r){
+    const start = r.start || '';
+    const date = r.date || '';
+    if (start){
+      const m = start.match(/^(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2})/);
+      if (m) return `${m[1]} @ ${m[2]}`;
+      return start;
+    }
+    return date || '—';
+  }
+
+  const el = {
+    tSummary: document.getElementById('tSummary'),
+    tDetail: document.getElementById('tDetail'),
+    vSummary: document.getElementById('vSummary'),
+    vDetail: document.getElementById('vDetail'),
+    backBtn: document.getElementById('backBtn'),
+
+    dCat: document.getElementById('dCat'),
+    dName: document.getElementById('dName'),
+    dPct: document.getElementById('dPct'),
+    dGoal: document.getElementById('dGoal'),
+    dPass: document.getElementById('dPass'),
+    dTotal: document.getElementById('dTotal'),
+    dFail: document.getElementById('dFail'),
+    passCards: document.getElementById('passCards'),
+    failCards: document.getElementById('failCards'),
+  };
+
+  let summaryRows = [];
+  let detailRows = [];
+
+  function setTab(which){
+    const isSummary = which === 'summary';
+    el.tSummary.setAttribute('aria-selected', isSummary ? 'true' : 'false');
+    el.tDetail.setAttribute('aria-selected', !isSummary ? 'true' : 'false');
+    el.vSummary.style.display = isSummary ? '' : 'none';
+    el.vDetail.style.display = !isSummary ? '' : 'none';
+  }
+
+  function buildWeights(auditCounts){
+    // auditCounts: [{name,total,pass,fail}]
+    const total = auditCounts.reduce((s,x)=>s+x.total,0);
+    if (!total) return auditCounts.map(x=>({...x, score:0}));
+    // raw weights
+    const withW = auditCounts.map(x=>({...x, w: (x.total/total)*100}));
+    // round and fix sum to 100
+    let rounded = withW.map(x=>({...x, score: Math.floor(x.w)}));
+    let sum = rounded.reduce((s,x)=>s+x.score,0);
+    // distribute remaining points by highest fractional part
+    const frac = withW.map((x,idx)=>({idx, frac: x.w - Math.floor(x.w)})).sort((a,b)=>b.frac-a.frac);
+    let k = 0;
+    while (sum < 100 && k < frac.length){
+      rounded[frac[k].idx].score += 1;
+      sum += 1; k++;
+    }
+    // if sum >100 (rare), remove from lowest fractional
+    k = frac.length-1;
+    while (sum > 100 && k >= 0){
+      const idx = frac[k].idx;
+      if (rounded[idx].score > 0){
+        rounded[idx].score -= 1;
+        sum -= 1;
+      }
+      k--;
+    }
+    return rounded.map(x=>({name:x.name,total:x.total,pass:x.pass,fail:x.fail,score:x.score}));
+  }
+
+  function renderSummary(){
+    // group detail by category -> audit
+    const byCat = new Map();
+    for (const r of detailRows){
+      const cat = r.check_category || 'Sin categoría';
+      const name = r.audit_name || 'Sin nombre';
+      if (!byCat.has(cat)) byCat.set(cat, new Map());
+      const m = byCat.get(cat);
+      if (!m.has(name)) m.set(name, []);
+      m.get(name).push(r);
+    }
+
+    const cats = Array.from(byCat.keys()).sort((a,b)=>a.localeCompare(b,'es'));
+    el.vSummary.innerHTML = '';
+
+    for (const cat of cats){
+      const catCard = document.createElement('div');
+      catCard.className = 'card catBlock';
+
+      const sumRow = summaryRows.find(s => (s.check_category || '') === cat);
+      const catPct = sumRow?.pass_rate_pct ? Math.round(n(sumRow.pass_rate_pct)) : Math.round(
+        pct(
+          Array.from(byCat.get(cat).values()).flat().filter(x=>toBool(x.is_pass)).length,
+          Array.from(byCat.get(cat).values()).flat().length
+        )
+      );
+
+      const head = document.createElement('div');
+      head.className = 'catHead';
+      head.innerHTML = `
+        <div class="catTitle">Categoría: ${cat}</div>
+        <div class="catScore">Puntaje de categoría: <b>${catPct}</b> /100</div>
+      `;
+      catCard.appendChild(head);
+
+      const tbl = document.createElement('table');
+      tbl.innerHTML = `
+        <thead>
+          <tr>
+            <th style="width:56px;"></th>
+            <th>Descripción</th>
+            <th style="width:140px;">Aprobación</th>
+            <th style="width:110px;">Puntaje</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      `;
+
+      const tbody = tbl.querySelector('tbody');
+
+      // audit stats
+      const audits = byCat.get(cat);
+      const auditCounts = Array.from(audits.keys()).map(name=>{
+        const rows = audits.get(name);
+        const total = rows.length;
+        const pass = rows.filter(x=>toBool(x.is_pass)).length;
+        const fail = total-pass;
+        return {name,total,pass,fail};
+      }).sort((a,b)=>a.name.localeCompare(b.name,'es'));
+
+      const weighted = buildWeights(auditCounts);
+
+      for (const a of weighted){
+        const tr = document.createElement('tr');
+        tr.className = 'rowBtn';
+        tr.innerHTML = `
+          <td>
+            <div class="check" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+            </div>
+          </td>
+          <td>
+            <div class="desc">
+              <div style="min-width:0;">
+                <a class="nameLine" href="javascript:void(0)">${a.name}</a>
+                <span class="crumb">» ${cat}</span>
+                <div class="subLine">${a.pass}/${a.total} aprobadas • ${a.fail} fallidas</div>
+              </div>
+            </div>
+          </td>
+          <td>${pct(a.pass,a.total)}%</td>
+          <td>${a.score}</td>
+        `;
+        tr.addEventListener('click', ()=>{
+          openDetail(cat, a.name, audits.get(a.name));
+        });
+        tbody.appendChild(tr);
+      }
+
+      catCard.appendChild(tbl);
+      el.vSummary.appendChild(catCard);
+    }
+  }
+
+  function renderCards(container, rows, emptyMsg){
+    container.innerHTML = '';
+    if (!rows.length){
+      container.innerHTML = `<div class="empty">${emptyMsg}</div>`;
+      return;
+    }
+    // orden por fecha/hora
+    const sorted = [...rows].sort((a,b)=>(a.start||a.date||'').localeCompare(b.start||b.date||''));
+    const limit = 60;
+
+    for (const r of sorted.slice(0, limit)){
+      const tile = document.createElement('div');
+      tile.className = 'tile';
+      const dt = fmtDT(r);
+      const link = r.video_link || '';
+      const obs = (r.observation || '').toString().trim();
+      tile.innerHTML = `
+        <div class="dt">${dt}</div>
+        ${link ? `<a href="${link}" target="_blank" rel="noreferrer">Video »</a>` : `<div class="obs">Sin video_link</div>`}
+        ${obs ? `<div class="obs">${obs}</div>` : ``}
+      `;
+      container.appendChild(tile);
+    }
+  }
+
+  function openDetail(cat, auditName, rows){
+    el.dCat.textContent = `Categoría: ${cat}`;
+    el.dName.textContent = auditName;
+
+    const total = rows.length;
+    const passRows = rows.filter(r=>toBool(r.is_pass));
+    const failRows = rows.filter(r=>!toBool(r.is_pass));
+    const pass = passRows.length;
+    const fail = failRows.length;
+    const p = pct(pass,total);
+
+    el.dPct.textContent = `${p}%`;
+    el.dPass.textContent = pass;
+    el.dTotal.textContent = total;
+    el.dFail.textContent = fail;
+
+    renderCards(el.passCards, passRows, 'No hay muestras aprobadas.');
+    renderCards(el.failCards, failRows, 'No hay muestras fallidas.');
+
+    el.tDetail.disabled = false;
+    setTab('detail');
+  }
+
+  async function fetchText(url){
+    const res = await fetch(url, {cache:'no-store'});
+    if (!res.ok) throw new Error(`No se pudo leer ${url} (HTTP ${res.status})`);
+    return await res.text();
+  }
+
+  async function init(){
+    const [sTxt, dTxt] = await Promise.all([fetchText(SUMMARY_URL), fetchText(DETAIL_URL)]);
+    summaryRows = parseCSV(sTxt, CSV_SEP);
+    detailRows = parseCSV(dTxt, CSV_SEP);
+    renderSummary();
+    setTab('summary');
+  }
+
+  el.tSummary.addEventListener('click', ()=>setTab('summary'));
+  el.tDetail.addEventListener('click', ()=>{ if(!el.tDetail.disabled) setTab('detail'); });
+  el.backBtn.addEventListener('click', ()=>setTab('summary'));
+
+  init().catch(err=>{
+    console.error(err);
+    el.vSummary.innerHTML = `<div class="card" style="padding:16px;">Error cargando CSV. Asegúrate de subir los CSV junto al HTML.<br/><span style="color:var(--muted); font-size:12px;">${String(err.message||err)}</span></div>`;
+  });
+</script>
+</body>
+</html>
