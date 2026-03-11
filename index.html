@@ -6,18 +6,19 @@
   <title>Reporte</title>
   <style>
     :root{
-      --bg:#f6f8fb;
+      --bg:#f7f8fb;
       --card:#ffffff;
-      --text:#18253a;
+      --text:#1e2a3b;
       --muted:#6b7280;
-      --line:#e5e7eb;
-      --header:#a9b1bc;
+      --line:#dfe4ea;
+      --header:#aab2bd;
       --link:#2563eb;
-      --ok:#16a34a;
-      --danger:#ef4444;
       --brand:#f26a21;
-      --blue:#3b82f6;
-      --shadow:0 10px 24px rgba(17,24,39,.06);
+      --blue:#3f7fdc;
+      --blue-soft:rgba(63,127,220,.35);
+      --pink:#f29bb2;
+      --pink-soft:rgba(242,155,178,.35);
+      --shadow:0 8px 18px rgba(17,24,39,.05);
       --radius:14px;
     }
 
@@ -30,17 +31,18 @@
       color:var(--text);
     }
 
+    .topBorder{
+      height:12px;
+      background:#2c4a45;
+    }
+
     .wrap{
-      max-width:1100px;
+      max-width:1120px;
       margin:0 auto;
-      padding:20px 20px 60px;
+      padding:18px 18px 60px;
     }
 
-    .reportHeader{
-      margin-bottom:18px;
-    }
-
-    .reportHeaderTop{
+    .header{
       display:flex;
       justify-content:space-between;
       align-items:flex-start;
@@ -49,115 +51,79 @@
       flex-wrap:wrap;
     }
 
-    .brandBlock{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-    }
-
     .lcLogo{
-      font-size:34px;
-      line-height:1;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:46px;
+      line-height:.95;
       font-weight:1000;
       color:var(--brand);
-      letter-spacing:-.5px;
-      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing:-1px;
     }
 
-    .metaLine{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-      color:#5b6678;
+    .meta{
+      margin-top:2px;
       font-size:14px;
+      color:#556274;
     }
 
-    .gritseeMark{
-      color:#9aa3b2;
+    .meta b{
+      color:#2f3b4c;
+    }
+
+    .powered{
       font-size:11px;
+      color:#9aa3b2;
       font-weight:700;
-      white-space:nowrap;
       margin-top:4px;
+      white-space:nowrap;
     }
 
-    .card{
+    .mainCard{
       background:var(--card);
       border:1px solid var(--line);
-      border-radius:var(--radius);
       box-shadow:var(--shadow);
     }
 
-    .detailTop{
-      padding:18px 18px 6px;
+    .section{
+      padding:18px 24px;
+      border-top:1px solid var(--line);
     }
 
-    .detailHeaderRow{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:16px;
-      flex-wrap:wrap;
+    .section:first-child{
+      border-top:none;
     }
 
-    .detailLabel{
-      color:var(--muted);
-      font-size:12px;
-      margin-bottom:4px;
-    }
-
-    .detailTitle{
-      font-size:20px;
+    .section h3{
+      margin:0 0 12px;
+      font-size:16px;
       font-weight:1000;
-      margin:0;
-      line-height:1.1;
-    }
-
-    .docBtn{
-      min-width:160px;
-      min-height:78px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:14px 18px;
-      border:1px solid #d8dee8;
-      border-radius:10px;
-      background:#fff;
-      color:var(--link);
-      text-decoration:none;
-      font-size:13px;
-      font-weight:700;
-      box-shadow:0 4px 12px rgba(17,24,39,.04);
-    }
-
-    .scoreBlock{
-      margin-top:10px;
+      color:#223146;
     }
 
     .scoreTitle{
-      color:#4b5563;
-      font-size:13px;
-      margin-bottom:8px;
+      font-size:28px;
+      font-weight:1000;
+      margin:0 0 4px;
+      color:#223146;
     }
 
-    .gaugeRow{
-      display:flex;
-      align-items:flex-end;
-      gap:24px;
-      flex-wrap:wrap;
+    .scoreLabel{
+      font-size:12px;
+      color:#6b7280;
+      margin-bottom:12px;
     }
 
     .gaugeWrap{
       position:relative;
-      width:330px;
+      width:340px;
       max-width:100%;
       height:190px;
     }
 
     .gaugeSvg{
-      display:block;
       width:100%;
       height:100%;
-      overflow:visible;
+      display:block;
     }
 
     .gaugeValue{
@@ -169,46 +135,45 @@
       align-items:flex-end;
       gap:6px;
       font-weight:1000;
-      color:#243042;
-      line-height:1;
+      color:#223146;
     }
 
     .gaugeValue .num{
-      font-size:62px;
+      font-size:64px;
+      line-height:1;
     }
 
     .gaugeValue .den{
-      font-size:24px;
+      font-size:18px;
       color:#667085;
-      margin-bottom:8px;
-      font-weight:800;
+      margin-bottom:10px;
     }
 
     .levelTag{
       position:absolute;
-      left:8px;
-      top:24px;
+      left:2px;
+      top:22px;
       width:76px;
-      background:#f5f5f5;
+      background:#f2f2f2;
       border:1px solid #d6d6d6;
       color:#222;
       text-align:center;
       padding:10px 8px 12px;
       font-size:10px;
-      line-height:1.15;
+      line-height:1.12;
       box-shadow:0 2px 8px rgba(17,24,39,.05);
     }
 
     .levelTag::after{
       content:"";
       position:absolute;
-      left:18px;
+      left:20px;
       bottom:-16px;
       width:0;
       height:0;
       border-left:12px solid transparent;
       border-right:12px solid transparent;
-      border-top:16px solid #f5f5f5;
+      border-top:16px solid #f2f2f2;
       filter:drop-shadow(0 1px 0 #d6d6d6);
     }
 
@@ -233,17 +198,6 @@
       color:#444;
     }
 
-    .section{
-      padding:18px;
-      border-top:1px solid var(--line);
-    }
-
-    .section h3{
-      margin:0 0 14px;
-      font-size:16px;
-      font-weight:1000;
-    }
-
     table{
       width:100%;
       border-collapse:collapse;
@@ -255,7 +209,7 @@
       font-size:12px;
       letter-spacing:.2px;
       text-align:left;
-      padding:10px 12px;
+      padding:10px 14px;
     }
 
     thead th:last-child{
@@ -263,7 +217,7 @@
     }
 
     tbody td{
-      padding:12px 12px;
+      padding:14px;
       border-top:1px solid var(--line);
       vertical-align:top;
     }
@@ -271,10 +225,12 @@
     tbody td:last-child{
       text-align:right;
       white-space:nowrap;
+      color:#384556;
     }
 
-    .incidentDesc{
-      font-size:14px;
+    .incidentText{
+      font-size:15px;
+      color:#243245;
     }
 
     .incidentLinks{
@@ -286,83 +242,30 @@
       color:var(--link);
       text-decoration:none;
       margin-right:10px;
-      font-weight:500;
     }
 
     .incidentLinks a:hover{
       text-decoration:underline;
     }
 
-    .distWrap{
+    .distGrid{
       display:grid;
-      grid-template-columns:1.3fr .9fr;
-      gap:24px;
+      grid-template-columns:1.35fr .85fr;
+      gap:28px;
       align-items:start;
     }
 
-    @media (max-width: 900px){
-      .distWrap{
+    @media (max-width: 920px){
+      .distGrid{
         grid-template-columns:1fr;
       }
     }
 
-    .distSub{
-      color:#555;
+    .subTitle{
       font-size:12px;
-      margin:0 0 8px;
       font-weight:700;
-    }
-
-    .bubbleChart{
-      position:relative;
-      height:270px;
-      border-left:1px solid #d8dce4;
-      border-bottom:1px solid #d8dce4;
-      background:
-        repeating-linear-gradient(to top, transparent 0 43px, #eceff4 43px 44px),
-        repeating-linear-gradient(to right, transparent 0 63px, #eceff4 63px 64px);
-      margin-top:32px;
-      margin-left:56px;
-    }
-
-    .yLabels{
-      position:absolute;
-      left:-56px;
-      top:0;
-      width:50px;
-      height:270px;
-      font-size:11px;
       color:#666;
-    }
-
-    .yLabels span{
-      position:absolute;
-      right:0;
-      transform:translateY(50%);
-      white-space:nowrap;
-    }
-
-    .xLabels{
-      display:grid;
-      grid-template-columns:repeat(7,1fr);
-      gap:0;
-      margin-left:56px;
-      margin-top:8px;
-      font-size:12px;
-      color:#666;
-      text-align:center;
-    }
-
-    .bubble{
-      position:absolute;
-      border-radius:999px;
-      background:rgba(88,177,255,.35);
-      border:1.5px solid rgba(59,130,246,.9);
-    }
-
-    .bubble.incident{
-      background:rgba(244,114,182,.35);
-      border:1.5px solid rgba(244,114,182,.95);
+      margin-bottom:10px;
     }
 
     .legend{
@@ -372,6 +275,7 @@
       font-size:12px;
       color:#666;
       margin-bottom:8px;
+      margin-left:150px;
     }
 
     .legendItem{
@@ -386,23 +290,79 @@
       border-radius:2px;
     }
 
+    .bubbleWrap{
+      position:relative;
+      padding-left:58px;
+      padding-bottom:26px;
+      margin-top:8px;
+    }
+
+    .bubbleChart{
+      position:relative;
+      height:260px;
+      border-left:1px solid #d8dce4;
+      border-bottom:1px solid #d8dce4;
+      background:
+        repeating-linear-gradient(to top, transparent 0 43px, #eceff4 43px 44px),
+        repeating-linear-gradient(to right, transparent 0 63px, #eceff4 63px 64px);
+    }
+
+    .yAxis{
+      position:absolute;
+      left:0;
+      top:0;
+      width:52px;
+      height:260px;
+      font-size:11px;
+      color:#666;
+    }
+
+    .yAxis span{
+      position:absolute;
+      right:6px;
+      transform:translateY(50%);
+      white-space:nowrap;
+    }
+
+    .xAxis{
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:0;
+      margin-top:8px;
+      font-size:12px;
+      color:#666;
+      text-align:center;
+    }
+
+    .bubble{
+      position:absolute;
+      border-radius:999px;
+      background:var(--blue-soft);
+      border:1.5px solid var(--blue);
+    }
+
+    .bubble.incident{
+      background:var(--pink-soft);
+      border:1.5px solid var(--pink);
+    }
+
     .donutWrap{
       display:flex;
       flex-direction:column;
       align-items:center;
-      justify-content:center;
-      margin-top:18px;
+      justify-content:flex-start;
+      padding-top:16px;
     }
 
     .donutBox{
       position:relative;
-      width:240px;
-      height:240px;
+      width:250px;
+      height:250px;
     }
 
     .donutSvg{
-      width:240px;
-      height:240px;
+      width:250px;
+      height:250px;
       display:block;
     }
 
@@ -412,7 +372,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:18px;
+      font-size:17px;
       font-weight:900;
       color:#fff;
       pointer-events:none;
@@ -422,6 +382,17 @@
       margin-top:10px;
       font-size:13px;
       color:#666;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .dot{
+      width:14px;
+      height:14px;
+      border-radius:999px;
+      background:var(--blue);
+      display:inline-block;
     }
 
     .stats{
@@ -429,9 +400,9 @@
       gap:22px;
       flex-wrap:wrap;
       justify-content:center;
-      padding:14px 16px 18px;
+      padding:14px 0 0;
       border-top:1px solid var(--line);
-      margin-top:10px;
+      margin-top:18px;
     }
 
     .stat{
@@ -440,14 +411,15 @@
     }
 
     .stat .t{
-      color:var(--muted);
+      color:#6b7280;
       font-size:12px;
     }
 
     .stat .v{
       font-weight:1000;
-      font-size:28px;
+      font-size:26px;
       margin-top:4px;
+      color:#0f274d;
     }
 
     .cards{
@@ -456,29 +428,35 @@
       gap:14px;
     }
 
-    @media (max-width:980px){
-      .cards{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+    @media (max-width: 980px){
+      .cards{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
     }
 
-    @media (max-width:560px){
-      .cards{ grid-template-columns:1fr; }
-      .detailTitle{ font-size:18px; }
-      .gaugeValue .num{ font-size:48px; }
-      .gaugeValue .den{ font-size:20px; }
+    @media (max-width: 560px){
+      .cards{
+        grid-template-columns:1fr;
+      }
+
+      .gaugeValue .num{
+        font-size:50px;
+      }
     }
 
     .tile{
-      background:var(--card);
+      background:#fff;
       border:1px solid var(--line);
-      border-radius:14px;
+      border-radius:12px;
       padding:14px;
-      box-shadow:0 8px 18px rgba(17,24,39,.05);
       min-height:86px;
+      box-shadow:0 5px 12px rgba(17,24,39,.04);
     }
 
     .dt{
       font-weight:900;
       font-size:13px;
+      color:#1f2c3d;
     }
 
     .tile a{
@@ -495,13 +473,6 @@
       text-decoration:underline;
     }
 
-    .obs{
-      margin-top:8px;
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.35;
-    }
-
     .empty{
       color:var(--muted);
       font-size:13px;
@@ -510,85 +481,56 @@
   </style>
 </head>
 <body>
+  <div class="topBorder"></div>
+
   <div class="wrap">
-    <div class="reportHeader">
-      <div class="reportHeaderTop">
-        <div class="brandBlock">
-          <div class="lcLogo">Little Caesars</div>
-          <div class="metaLine">
-            <span><b>Locación:</b> Molino</span>
-            <span><b>Período:</b> feb. 23 - mar. 1, 2026</span>
-          </div>
+    <div class="header">
+      <div>
+        <div class="lcLogo">Little Caesars</div>
+        <div class="meta">
+          <b>Locación:</b> Molino
+          &nbsp;&nbsp;
+          <b>Período:</b> feb. 23 - mar. 1, 2026
         </div>
-        <div class="gritseeMark">powered by gritsee</div>
       </div>
+      <div class="powered">powered by gritsee</div>
     </div>
 
-    <div class="card" id="detailCard">
-      <div class="detailTop">
-        <div class="detailHeaderRow">
-          <div>
-            <div class="detailLabel">Análisis</div>
-            <h2 class="detailTitle" id="dName">—</h2>
+    <div class="mainCard">
+      <div class="section">
+        <h2 class="scoreTitle">Puntuación de esta semana</h2>
+
+        <div class="gaugeWrap">
+          <div class="levelTag">
+            <span class="lvl">nivel</span>
+            <span class="big" id="levelNum">2</span>
+            <span class="small">Obtén 8b+ durante 3 semanas para el siguiente</span>
           </div>
 
-          <a href="#" class="docBtn" id="docBtn">ver documentación</a>
-        </div>
+          <svg class="gaugeSvg" viewBox="0 0 340 190" aria-hidden="true">
+            <path
+              d="M 42 160 A 128 128 0 0 1 298 160"
+              fill="none"
+              stroke="#d9dde3"
+              stroke-width="34"
+              pathLength="100"
+            ></path>
 
-        <div class="scoreBlock">
-          <div class="scoreTitle">% muestras aprobadas</div>
+            <path
+              id="gaugeArc"
+              d="M 42 160 A 128 128 0 0 1 298 160"
+              fill="none"
+              stroke="#2f5be3"
+              stroke-width="34"
+              pathLength="100"
+              stroke-dasharray="0 100"
+            ></path>
+          </svg>
 
-          <div class="gaugeRow">
-            <div class="gaugeWrap">
-              <div class="levelTag">
-                <span class="lvl">nivel</span>
-                <span class="big" id="dLevel">2</span>
-                <span class="small">Obtén 8b+ durante 3 semanas para el siguiente</span>
-              </div>
-
-              <svg class="gaugeSvg" viewBox="0 0 330 190" aria-hidden="true">
-                <path
-                  d="M 40 160 A 125 125 0 0 1 290 160"
-                  fill="none"
-                  stroke="#d9dde3"
-                  stroke-width="32"
-                  stroke-linecap="butt"
-                  pathLength="100"
-                ></path>
-
-                <path
-                  id="gaugeArc"
-                  d="M 40 160 A 125 125 0 0 1 290 160"
-                  fill="none"
-                  stroke="#2f5be3"
-                  stroke-width="32"
-                  stroke-linecap="butt"
-                  pathLength="100"
-                  stroke-dasharray="0 100"
-                ></path>
-              </svg>
-
-              <div class="gaugeValue">
-                <span class="num" id="dScoreNum">93</span>
-                <span class="den">/100</span>
-              </div>
-            </div>
+          <div class="gaugeValue">
+            <span class="num" id="scoreNum">93</span>
+            <span class="den">/100</span>
           </div>
-        </div>
-      </div>
-
-      <div class="stats">
-        <div class="stat">
-          <div class="t">Muestras Aprobadas</div>
-          <div class="v" id="dPass">—</div>
-        </div>
-        <div class="stat">
-          <div class="t">Muestras Totales</div>
-          <div class="v" id="dTotal">—</div>
-        </div>
-        <div class="stat">
-          <div class="t">Muestras Fallidas</div>
-          <div class="v" id="dFail">—</div>
         </div>
       </div>
 
@@ -607,61 +549,91 @@
       <div class="section">
         <h3>Distribución</h3>
 
-        <div class="distWrap">
+        <div class="distGrid">
           <div>
-            <div class="distSub">por turno</div>
+            <div class="subTitle">por turno</div>
+
             <div class="legend">
               <div class="legendItem">
-                <span class="legendColor" style="background:rgba(244,114,182,.35); border:1px solid rgba(244,114,182,.95);"></span>
+                <span class="legendColor" style="background:rgba(242,155,178,.35); border:1px solid rgba(242,155,178,.95);"></span>
                 <span>Incidentes</span>
               </div>
               <div class="legendItem">
-                <span class="legendColor" style="background:rgba(88,177,255,.35); border:1px solid rgba(59,130,246,.95);"></span>
+                <span class="legendColor" style="background:rgba(63,127,220,.35); border:1px solid rgba(63,127,220,.95);"></span>
                 <span>Muestras</span>
               </div>
             </div>
 
-            <div class="bubbleChart" id="bubbleChart">
-              <div class="yLabels">
+            <div class="bubbleWrap">
+              <div class="yAxis">
                 <span style="bottom:0px;">8pm - 12am</span>
-                <span style="bottom:45px;">4pm - 8pm</span>
-                <span style="bottom:90px;">12pm - 4pm</span>
-                <span style="bottom:135px;">8am - 12pm</span>
-                <span style="bottom:180px;">4am - 8am</span>
-                <span style="bottom:225px;">12am - 4am</span>
+                <span style="bottom:43px;">4pm - 8pm</span>
+                <span style="bottom:86px;">12pm - 4pm</span>
+                <span style="bottom:129px;">8am - 12pm</span>
+                <span style="bottom:172px;">4am - 8am</span>
+                <span style="bottom:215px;">12am - 4am</span>
               </div>
-            </div>
-
-            <div class="xLabels">
-              <span>lun. (23)</span>
-              <span>mar. (24)</span>
-              <span>mié. (25)</span>
-              <span>jue. (26)</span>
-              <span>vie. (27)</span>
-              <span>sáb. (28)</span>
-              <span>dom. (1)</span>
+              <div class="bubbleChart" id="bubbleChart"></div>
+              <div class="xAxis">
+                <span>lun. (23)</span>
+                <span>mar. (24)</span>
+                <span>mié. (25)</span>
+                <span>jue. (26)</span>
+                <span>vie. (27)</span>
+                <span>sáb. (28)</span>
+                <span>dom. (1)</span>
+              </div>
             </div>
           </div>
 
           <div>
-            <div class="distSub">por tipo</div>
+            <div class="subTitle">por tipo</div>
+
             <div class="donutWrap">
               <div class="donutBox">
-                <svg class="donutSvg" viewBox="0 0 240 240">
-                  <circle cx="120" cy="120" r="70" fill="none" stroke="#e5e7eb" stroke-width="40"></circle>
-                  <circle id="donutArc" cx="120" cy="120" r="70" fill="none" stroke="#3b82f6" stroke-width="40"
-                    stroke-dasharray="439.82 439.82"
+                <svg class="donutSvg" viewBox="0 0 250 250">
+                  <circle cx="125" cy="125" r="74" fill="none" stroke="#e5e7eb" stroke-width="42"></circle>
+                  <circle
+                    id="donutArc"
+                    cx="125"
+                    cy="125"
+                    r="74"
+                    fill="none"
+                    stroke="#3f7fdc"
+                    stroke-width="42"
+                    stroke-dasharray="465 465"
                     stroke-dashoffset="0"
-                    transform="rotate(-90 120 120)"></circle>
-                  <circle cx="120" cy="120" r="24" fill="#f6f8fb"></circle>
+                    transform="rotate(-90 125 125)"
+                  ></circle>
+                  <circle cx="125" cy="125" r="24" fill="#f7f8fb"></circle>
                 </svg>
                 <div class="donutCenter" id="donutPercent">100%</div>
               </div>
-              <div class="donutLegend" id="donutLegend"></div>
+
+              <div class="donutLegend">
+                <span class="dot"></span>
+                <span>Ticket No Entregado</span>
+              </div>
             </div>
           </div>
         </div>
-        
+
+        <div class="stats">
+          <div class="stat">
+            <div class="t">Muestras Aprobadas</div>
+            <div class="v" id="passCount">—</div>
+          </div>
+          <div class="stat">
+            <div class="t">Muestras Totales</div>
+            <div class="v" id="totalCount">—</div>
+          </div>
+          <div class="stat">
+            <div class="t">Muestras Fallidas</div>
+            <div class="v" id="failCount">—</div>
+          </div>
+        </div>
+      </div>
+
       <div class="section">
         <h3>Muestras Aprobadas</h3>
         <div id="passCards" class="cards"></div>
@@ -675,8 +647,7 @@
   </div>
 
   <script>
-    const SUMMARY_URL = 'data-1773264796651.csv';
-    const DETAIL_URL  = 'data-1773264896155.csv';
+    const DETAIL_URL = 'data-1773264896155.csv';
     const CSV_SEP = ',';
 
     function parseCSV(text, sep) {
@@ -702,9 +673,11 @@
       rows.push(row);
 
       const cleaned = rows.filter(r => r.some(v => (v ?? '').trim() !== ''));
-      if (cleaned.length === 0) return [];
+      if (!cleaned.length) return [];
+
       const headers = cleaned[0].map(h => (h ?? '').trim().replace(/^"|"$/g,''));
       const out = [];
+
       for (let r = 1; r < cleaned.length; r++) {
         const obj = {};
         for (let c = 0; c < headers.length; c++) {
@@ -717,32 +690,12 @@
 
     function toBool(v){
       if (typeof v === 'boolean') return v;
-      const x = String(v ?? '').trim().toLowerCase();
-      return (x === 'true' || x === '1' || x === 't' || x === 'yes');
+      return String(v ?? '').trim().toLowerCase() === 'true';
     }
 
     function pct(a,b){
       if (!b) return 0;
       return Math.round((a/b)*100);
-    }
-
-    function fmtDT(r){
-      const start = r.start || '';
-      if (start){
-        const m = start.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})/);
-        if (m) return `${m[1]}-${m[2]}-${m[3]} @ ${m[4]}:${m[5]}`;
-        return start;
-      }
-      return r.date || '—';
-    }
-
-    function fmtDateOnly(r){
-      const start = r.start || '';
-      if (start){
-        const m = start.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})/);
-        if (m) return `${m[1]}-${m[2]}-${m[3]}<br>${m[4]}:${m[5]}`;
-      }
-      return (r.date || '—');
     }
 
     function calcLevel(score){
@@ -752,10 +705,18 @@
       return 1;
     }
 
-    function gaugeColor(score){
-      if (score >= 90) return '#2f5be3';
-      if (score >= 80) return '#f59e0b';
-      return '#ef4444';
+    function fmtDT(r){
+      const start = r.start || '';
+      const m = start.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})/);
+      if (!m) return r.date || '—';
+      return `${m[1]}-${m[2]}-${m[3]} @ ${m[4]}:${m[5]}`;
+    }
+
+    function fmtDateCell(r){
+      const start = r.start || '';
+      const m = start.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})/);
+      if (!m) return r.date || '—';
+      return `${m[1]}-${m[2]}-${m[3]}<br>${m[4]}:${m[5]}`;
     }
 
     function renderCards(container, rows, emptyMsg){
@@ -766,21 +727,13 @@
       }
 
       const sorted = [...rows].sort((a,b)=>(a.start||a.date||'').localeCompare(b.start||b.date||''));
-      const limit = 60;
-
-      for (const r of sorted.slice(0, limit)){
+      for (const r of sorted.slice(0, 60)){
         const tile = document.createElement('div');
         tile.className = 'tile';
-        const dt = fmtDT(r);
-        const link = r.video_link || '';
-        const obs = (r.observation || '').toString().trim();
-
         tile.innerHTML = `
-          <div class="dt">${dt}</div>
-          ${link ? `<a href="${link}" target="_blank" rel="noreferrer">Video »</a>` : `<div class="obs">Sin video_link</div>`}
-          ${obs ? `<div class="obs">${obs}</div>` : ``}
+          <div class="dt">${fmtDT(r)}</div>
+          <a href="${r.video_link || '#'}" target="_blank" rel="noreferrer">Video »</a>
         `;
-
         container.appendChild(tile);
       }
     }
@@ -791,33 +744,30 @@
 
       let rowsToUse = [...failRows];
 
-      if (rowsToUse.length < 3) {
+      if (rowsToUse.length < 2) {
         rowsToUse = rowsToUse.concat([
           {
-            observation: "Ticket No Entregado",
-            video_link: "#",
-            start: "2026-02-24 16:01:00+00"
+            video_link:'#',
+            start:'2026-02-24 16:01:00+00'
           },
           {
-            observation: "Ticket No Entregado",
-            video_link: "#",
-            start: "2026-02-28 19:39:00+00"
+            video_link:'#',
+            start:'2026-02-28 19:39:00+00'
           }
         ]);
       }
 
       rowsToUse.slice(0, 4).forEach(r => {
-        const desc = (r.observation || "C").trim() || "Ticket No Entregado";
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td>
-            <div class="incidentDesc">${desc}</div>
+            <div class="incidentText">Ticket No Entregado</div>
             <div class="incidentLinks">
               <a href="${r.video_link || '#'}" target="_blank" rel="noreferrer">Video »</a>
               <a href="#">Photo »</a>
             </div>
           </td>
-          <td>${fmtDateOnly(r)}</td>
+          <td>${fmtDateCell(r)}</td>
         `;
         body.appendChild(tr);
       });
@@ -825,11 +775,11 @@
 
     function renderBubbleChart(){
       const chart = document.getElementById('bubbleChart');
-      chart.querySelectorAll('.bubble').forEach(x => x.remove());
+      chart.innerHTML = '';
 
-      const sampleBubbles = [
+      const bubbles = [
         {x:0,y:2,size:34,type:'sample'},
-        {x:0,y:1,size:24,type:'sample'},
+        {x:0,y:1,size:26,type:'sample'},
         {x:1,y:2,size:20,type:'sample'},
         {x:1,y:1,size:18,type:'sample'},
         {x:3,y:2,size:18,type:'sample'},
@@ -845,37 +795,31 @@
         {x:4,y:0,size:5,type:'sample'},
         {x:5,y:0,size:7,type:'sample'},
         {x:6,y:1,size:6,type:'sample'},
-
         {x:5,y:1,size:10,type:'incident'},
         {x:2,y:2,size:8,type:'incident'}
       ];
 
-      const colW = 64;
-      const rowH = 45;
-      const xOffset = 10;
-      const yBottomOffset = 18;
+      const colW = 63;
+      const rowH = 43;
+      const xBase = 0;
+      const yBase = 0;
 
-      sampleBubbles.forEach(b => {
+      bubbles.forEach(b => {
         const div = document.createElement('div');
         div.className = 'bubble' + (b.type === 'incident' ? ' incident' : '');
         div.style.width = `${b.size}px`;
         div.style.height = `${b.size}px`;
-        div.style.left = `${xOffset + b.x * colW - (b.size/2) + 22}px`;
-        div.style.bottom = `${yBottomOffset + b.y * rowH - (b.size/2)}px`;
+        div.style.left = `${xBase + b.x * colW - (b.size/2) + 31}px`;
+        div.style.bottom = `${yBase + b.y * rowH - (b.size/2) + 21}px`;
         chart.appendChild(div);
       });
     }
 
     function renderDonut(){
       const donutArc = document.getElementById('donutArc');
-      const percent = 100;
-      const circumference = 2 * Math.PI * 70;
-      const visible = circumference * (percent / 100);
-      const hidden = circumference - visible;
-
-      donutArc.setAttribute('stroke-dasharray', `${visible} ${hidden}`);
-      document.getElementById('donutPercent').textContent = `${percent}%`;
-      document.getElementById('donutLegend').textContent = "Ticket no Entregado";
+      const circumference = 2 * Math.PI * 74;
+      donutArc.setAttribute('stroke-dasharray', `${circumference} 0`);
+      document.getElementById('donutPercent').textContent = '100%';
     }
 
     async function fetchText(url){
@@ -885,33 +829,25 @@
     }
 
     async function init(){
-      const [summaryTxt, detailTxt] = await Promise.all([
-        fetchText(SUMMARY_URL),
-        fetchText(DETAIL_URL)
-      ]);
+      const detailTxt = await fetchText(DETAIL_URL);
+      const rows = parseCSV(detailTxt, CSV_SEP);
 
-      const summaryRows = parseCSV(summaryTxt, CSV_SEP);
-      const detailRows = parseCSV(detailTxt, CSV_SEP);
+      const passRows = rows.filter(r => toBool(r.is_pass));
+      const failRows = rows.filter(r => !toBool(r.is_pass));
 
-      const summary = summaryRows[0] || {};
-      const auditName = summary.audit_name || "Proceso de Cobro";
-
-      const total = detailRows.length;
-      const passRows = detailRows.filter(r => toBool(r.is_pass));
-      const failRows = detailRows.filter(r => !toBool(r.is_pass));
       const pass = passRows.length;
       const fail = failRows.length;
+      const total = rows.length;
       const score = pct(pass, total);
       const level = calcLevel(score);
 
-      document.getElementById('dName').textContent = auditName;
-      document.getElementById('distPass').textContent = pass;
-      document.getElementById('distTotal').textContent = total;
-      document.getElementById('distFail').textContent = fail;
-      document.getElementById('dLevel').textContent = level;
-      document.getElementById('dScoreNum').textContent = score;
+      document.getElementById('scoreNum').textContent = score;
+      document.getElementById('levelNum').textContent = level;
       document.getElementById('gaugeArc').setAttribute('stroke-dasharray', `${score} 100`);
-      document.getElementById('gaugeArc').setAttribute('stroke', gaugeColor(score));
+
+      document.getElementById('passCount').textContent = pass;
+      document.getElementById('totalCount').textContent = total;
+      document.getElementById('failCount').textContent = fail;
 
       renderIncidentTable(failRows);
       renderBubbleChart();
@@ -922,8 +858,8 @@
 
     init().catch(err => {
       console.error(err);
-      document.getElementById('detailCard').innerHTML = `
-        <div style="padding:16px;">
+      document.querySelector('.mainCard').innerHTML = `
+        <div class="section">
           Error cargando CSV.<br>
           <span style="color:#6b7280;font-size:12px;">${String(err.message || err)}</span>
         </div>
