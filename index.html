@@ -657,27 +657,11 @@
                 </svg>
                 <div class="donutCenter" id="donutPercent">100%</div>
               </div>
-              <div class="donutLegend" id="donutLegend">Cliente No Hot N' Ready</div>
+              <div class="donutLegend" id="donutLegend"></div>
             </div>
           </div>
         </div>
-
-        <div class="stats">
-          <div class="stat">
-            <div class="t">Muestras Aprobadas</div>
-            <div class="v" id="distPass">—</div>
-          </div>
-          <div class="stat">
-            <div class="t">Muestras Totales</div>
-            <div class="v" id="distTotal">—</div>
-          </div>
-          <div class="stat">
-            <div class="t">Muestras Fallidas</div>
-            <div class="v" id="distFail">—</div>
-          </div>
-        </div>
-      </div>
-
+        
       <div class="section">
         <h3>Muestras Aprobadas</h3>
         <div id="passCards" class="cards"></div>
@@ -810,12 +794,12 @@
       if (rowsToUse.length < 3) {
         rowsToUse = rowsToUse.concat([
           {
-            observation: "Cliente No Hot N' Ready",
+            observation: "Ticket No Entregado",
             video_link: "#",
             start: "2026-02-24 16:01:00+00"
           },
           {
-            observation: "Cliente No Hot N' Ready",
+            observation: "Ticket No Entregado",
             video_link: "#",
             start: "2026-02-28 19:39:00+00"
           }
@@ -823,7 +807,7 @@
       }
 
       rowsToUse.slice(0, 4).forEach(r => {
-        const desc = (r.observation || "Cliente No Hot N' Ready").trim() || "Cliente No Hot N' Ready";
+        const desc = (r.observation || "C").trim() || "Ticket No Entregado";
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td>
@@ -891,7 +875,7 @@
 
       donutArc.setAttribute('stroke-dasharray', `${visible} ${hidden}`);
       document.getElementById('donutPercent').textContent = `${percent}%`;
-      document.getElementById('donutLegend').textContent = "Cliente No Hot N' Ready";
+      document.getElementById('donutLegend').textContent = "Ticket no Entregado";
     }
 
     async function fetchText(url){
@@ -921,9 +905,6 @@
       const level = calcLevel(score);
 
       document.getElementById('dName').textContent = auditName;
-      document.getElementById('dPass').textContent = pass;
-      document.getElementById('dTotal').textContent = total;
-      document.getElementById('dFail').textContent = fail;
       document.getElementById('distPass').textContent = pass;
       document.getElementById('distTotal').textContent = total;
       document.getElementById('distFail').textContent = fail;
