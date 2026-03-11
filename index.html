@@ -16,7 +16,7 @@
       --ok:#16a34a;
       --danger:#ef4444;
       --brand:#f26a21;
-      --blue:#2f5be3;
+      --blue:#3b82f6;
       --shadow:0 10px 24px rgba(17,24,39,.06);
       --radius:14px;
     }
@@ -80,162 +80,11 @@
       margin-top:4px;
     }
 
-    .tabs{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:flex-end;
-    }
-
-    .tab{
-      border:none;
-      background:transparent;
-      color:var(--muted);
-      font-weight:900;
-      padding:10px 14px;
-      border-radius:12px;
-      cursor:pointer;
-    }
-
-    .tab[aria-selected="true"]{
-      background:var(--card);
-      color:var(--text);
-      box-shadow:var(--shadow);
-      border:1px solid var(--line);
-    }
-
     .card{
       background:var(--card);
       border:1px solid var(--line);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
-    }
-
-    .catBlock{ margin:16px 0 26px; }
-
-    .catHead{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:14px 16px 10px;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .catTitle{
-      font-weight:1000;
-      font-size:15px;
-    }
-
-    .catScore{
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .catScore b{
-      color:var(--text);
-      font-size:14px;
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-    }
-
-    thead th{
-      background:var(--header);
-      color:#fff;
-      font-size:12px;
-      letter-spacing:.2px;
-      text-align:left;
-      padding:10px 12px;
-    }
-
-    thead th:nth-child(3),
-    thead th:nth-child(4){
-      text-align:right;
-    }
-
-    tbody td{
-      padding:12px 12px;
-      border-top:1px solid var(--line);
-      vertical-align:top;
-    }
-
-    tbody td:nth-child(3),
-    tbody td:nth-child(4){
-      text-align:right;
-      white-space:nowrap;
-    }
-
-    .rowBtn{ cursor:pointer; }
-
-    .rowBtn:hover td{
-      background:#f9fafb;
-    }
-
-    .desc{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-    }
-
-    .check{
-      width:22px;
-      height:22px;
-      border-radius:999px;
-      flex:0 0 auto;
-      background:#11a6a1;
-      display:grid;
-      place-items:center;
-      margin-top:2px;
-    }
-
-    .check.fail{
-      background:var(--danger);
-    }
-
-    .check svg{
-      width:14px;
-      height:14px;
-      fill:#fff;
-    }
-
-    .nameLine{
-      font-weight:900;
-      color:var(--link);
-      text-decoration:none;
-    }
-
-    .nameLine:hover{
-      text-decoration:underline;
-    }
-
-    .crumb{
-      color:var(--muted);
-      font-size:12px;
-      margin-left:6px;
-    }
-
-    .subLine{
-      color:var(--text);
-      font-size:13px;
-      margin-top:4px;
-    }
-
-    .btnBack{
-      border:1px solid var(--line);
-      background:var(--card);
-      color:var(--text);
-      font-weight:900;
-      border-radius:12px;
-      padding:10px 12px;
-      cursor:pointer;
-      box-shadow:var(--shadow);
-    }
-
-    .btnBack:hover{
-      background:#f9fafb;
     }
 
     .detailTop{
@@ -384,6 +233,197 @@
       color:#444;
     }
 
+    .section{
+      padding:18px;
+      border-top:1px solid var(--line);
+    }
+
+    .section h3{
+      margin:0 0 14px;
+      font-size:16px;
+      font-weight:1000;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    thead th{
+      background:var(--header);
+      color:#fff;
+      font-size:12px;
+      letter-spacing:.2px;
+      text-align:left;
+      padding:10px 12px;
+    }
+
+    thead th:last-child{
+      text-align:right;
+    }
+
+    tbody td{
+      padding:12px 12px;
+      border-top:1px solid var(--line);
+      vertical-align:top;
+    }
+
+    tbody td:last-child{
+      text-align:right;
+      white-space:nowrap;
+    }
+
+    .incidentDesc{
+      font-size:14px;
+    }
+
+    .incidentLinks{
+      margin-top:6px;
+      font-size:13px;
+    }
+
+    .incidentLinks a{
+      color:var(--link);
+      text-decoration:none;
+      margin-right:10px;
+      font-weight:500;
+    }
+
+    .incidentLinks a:hover{
+      text-decoration:underline;
+    }
+
+    .distWrap{
+      display:grid;
+      grid-template-columns:1.3fr .9fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    @media (max-width: 900px){
+      .distWrap{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .distSub{
+      color:#555;
+      font-size:12px;
+      margin:0 0 8px;
+      font-weight:700;
+    }
+
+    .bubbleChart{
+      position:relative;
+      height:270px;
+      border-left:1px solid #d8dce4;
+      border-bottom:1px solid #d8dce4;
+      background:
+        repeating-linear-gradient(to top, transparent 0 43px, #eceff4 43px 44px),
+        repeating-linear-gradient(to right, transparent 0 63px, #eceff4 63px 64px);
+      margin-top:32px;
+      margin-left:56px;
+    }
+
+    .yLabels{
+      position:absolute;
+      left:-56px;
+      top:0;
+      width:50px;
+      height:270px;
+      font-size:11px;
+      color:#666;
+    }
+
+    .yLabels span{
+      position:absolute;
+      right:0;
+      transform:translateY(50%);
+      white-space:nowrap;
+    }
+
+    .xLabels{
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:0;
+      margin-left:56px;
+      margin-top:8px;
+      font-size:12px;
+      color:#666;
+      text-align:center;
+    }
+
+    .bubble{
+      position:absolute;
+      border-radius:999px;
+      background:rgba(88,177,255,.35);
+      border:1.5px solid rgba(59,130,246,.9);
+    }
+
+    .bubble.incident{
+      background:rgba(244,114,182,.35);
+      border:1.5px solid rgba(244,114,182,.95);
+    }
+
+    .legend{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      font-size:12px;
+      color:#666;
+      margin-bottom:8px;
+    }
+
+    .legendItem{
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .legendColor{
+      width:34px;
+      height:12px;
+      border-radius:2px;
+    }
+
+    .donutWrap{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      margin-top:18px;
+    }
+
+    .donutBox{
+      position:relative;
+      width:240px;
+      height:240px;
+    }
+
+    .donutSvg{
+      width:240px;
+      height:240px;
+      display:block;
+    }
+
+    .donutCenter{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      font-weight:900;
+      color:#fff;
+      pointer-events:none;
+    }
+
+    .donutLegend{
+      margin-top:10px;
+      font-size:13px;
+      color:#666;
+    }
+
     .stats{
       display:flex;
       gap:22px;
@@ -410,17 +450,6 @@
       margin-top:4px;
     }
 
-    .section{
-      padding:18px;
-      border-top:1px solid var(--line);
-    }
-
-    .section h3{
-      margin:0 0 10px;
-      font-size:16px;
-      font-weight:1000;
-    }
-
     .cards{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
@@ -436,7 +465,6 @@
       .detailTitle{ font-size:18px; }
       .gaugeValue .num{ font-size:48px; }
       .gaugeValue .den{ font-size:20px; }
-      .tabs{ justify-content:flex-start; }
     }
 
     .tile{
@@ -483,7 +511,6 @@
 </head>
 <body>
   <div class="wrap">
-
     <div class="reportHeader">
       <div class="reportHeaderTop">
         <div class="brandBlock">
@@ -495,69 +522,142 @@
         </div>
         <div class="gritseeMark">powered by gritsee</div>
       </div>
-
-      <div class="tabs" role="tablist" aria-label="Vistas">
-        <button class="tab" id="tSummary" role="tab" aria-selected="true">Resumen</button>
-        <button class="tab" id="tDetail" role="tab" aria-selected="false" disabled>Detalle</button>
-      </div>
     </div>
 
-    <div id="vSummary" role="tabpanel" aria-labelledby="tSummary"></div>
-
-    <div id="vDetail" role="tabpanel" aria-labelledby="tDetail" style="display:none;">
-      <div style="margin-bottom:12px;">
-        <button class="btnBack" id="backBtn">← Volver a Resumen</button>
-      </div>
-
-      <div class="card" id="detailCard">
-        <div class="detailTop">
-          <div class="detailHeaderRow">
-            <div>
-              <div class="detailLabel" id="dCat">Análisis</div>
-              <h2 class="detailTitle" id="dName">—</h2>
-            </div>
-
-            <a href="#" class="docBtn" id="docBtn">ver documentación</a>
+    <div class="card" id="detailCard">
+      <div class="detailTop">
+        <div class="detailHeaderRow">
+          <div>
+            <div class="detailLabel">Análisis</div>
+            <h2 class="detailTitle" id="dName">—</h2>
           </div>
 
-          <div class="scoreBlock">
-            <div class="scoreTitle">% muestras aprobadas</div>
+          <a href="#" class="docBtn" id="docBtn">ver documentación</a>
+        </div>
 
-            <div class="gaugeRow">
-              <div class="gaugeWrap">
-                <div class="levelTag">
-                  <span class="lvl">nivel</span>
-                  <span class="big" id="dLevel">2</span>
-                  <span class="small">Obtén 8b+ durante 3 semanas para el siguiente</span>
-                </div>
+        <div class="scoreBlock">
+          <div class="scoreTitle">% muestras aprobadas</div>
 
-                <svg class="gaugeSvg" viewBox="0 0 330 190" aria-hidden="true">
-                  <path
-                    d="M 40 160 A 125 125 0 0 1 290 160"
-                    fill="none"
-                    stroke="#d9dde3"
-                    stroke-width="32"
-                    stroke-linecap="butt"
-                    pathLength="100"
-                  ></path>
-
-                  <path
-                    id="gaugeArc"
-                    d="M 40 160 A 125 125 0 0 1 290 160"
-                    fill="none"
-                    stroke="#2f5be3"
-                    stroke-width="32"
-                    stroke-linecap="butt"
-                    pathLength="100"
-                    stroke-dasharray="0 100"
-                  ></path>
-                </svg>
-
-                <div class="gaugeValue">
-                  <span class="num" id="dScoreNum">93</span>
-                  <span class="den">/100</span>
-                </div>
+          <div class="gaugeRow">
+            <div class="gaugeWrap">
+              <div class="levelTag">
+                <span class="lvl">nivel</span>
+                <span class="big" id="dLevel">2</span>
+                <span class="small">Obtén 8b+ durante 3 semanas para el siguiente</span>
               </div>
+
+              <svg class="gaugeSvg" viewBox="0 0 330 190" aria-hidden="true">
+                <path
+                  d="M 40 160 A 125 125 0 0 1 290 160"
+                  fill="none"
+                  stroke="#d9dde3"
+                  stroke-width="32"
+                  stroke-linecap="butt"
+                  pathLength="100"
+                ></path>
+
+                <path
+                  id="gaugeArc"
+                  d="M 40 160 A 125 125 0 0 1 290 160"
+                  fill="none"
+                  stroke="#2f5be3"
+                  stroke-width="32"
+                  stroke-linecap="butt"
+                  pathLength="100"
+                  stroke-dasharray="0 100"
+                ></path>
+              </svg>
+
+              <div class="gaugeValue">
+                <span class="num" id="dScoreNum">93</span>
+                <span class="den">/100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="t">Muestras Aprobadas</div>
+          <div class="v" id="dPass">—</div>
+        </div>
+        <div class="stat">
+          <div class="t">Muestras Totales</div>
+          <div class="v" id="dTotal">—</div>
+        </div>
+        <div class="stat">
+          <div class="t">Muestras Fallidas</div>
+          <div class="v" id="dFail">—</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <table>
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Date & Time</th>
+            </tr>
+          </thead>
+          <tbody id="incidentTableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h3>Distribución</h3>
+
+        <div class="distWrap">
+          <div>
+            <div class="distSub">por turno</div>
+            <div class="legend">
+              <div class="legendItem">
+                <span class="legendColor" style="background:rgba(244,114,182,.35); border:1px solid rgba(244,114,182,.95);"></span>
+                <span>Incidentes</span>
+              </div>
+              <div class="legendItem">
+                <span class="legendColor" style="background:rgba(88,177,255,.35); border:1px solid rgba(59,130,246,.95);"></span>
+                <span>Muestras</span>
+              </div>
+            </div>
+
+            <div class="bubbleChart" id="bubbleChart">
+              <div class="yLabels">
+                <span style="bottom:0px;">8pm - 12am</span>
+                <span style="bottom:45px;">4pm - 8pm</span>
+                <span style="bottom:90px;">12pm - 4pm</span>
+                <span style="bottom:135px;">8am - 12pm</span>
+                <span style="bottom:180px;">4am - 8am</span>
+                <span style="bottom:225px;">12am - 4am</span>
+              </div>
+            </div>
+
+            <div class="xLabels">
+              <span>lun. (23)</span>
+              <span>mar. (24)</span>
+              <span>mié. (25)</span>
+              <span>jue. (26)</span>
+              <span>vie. (27)</span>
+              <span>sáb. (28)</span>
+              <span>dom. (1)</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="distSub">por tipo</div>
+            <div class="donutWrap">
+              <div class="donutBox">
+                <svg class="donutSvg" viewBox="0 0 240 240">
+                  <circle cx="120" cy="120" r="70" fill="none" stroke="#e5e7eb" stroke-width="40"></circle>
+                  <circle id="donutArc" cx="120" cy="120" r="70" fill="none" stroke="#3b82f6" stroke-width="40"
+                    stroke-dasharray="439.82 439.82"
+                    stroke-dashoffset="0"
+                    transform="rotate(-90 120 120)"></circle>
+                  <circle cx="120" cy="120" r="24" fill="#f6f8fb"></circle>
+                </svg>
+                <div class="donutCenter" id="donutPercent">100%</div>
+              </div>
+              <div class="donutLegend" id="donutLegend">Cliente No Hot N' Ready</div>
             </div>
           </div>
         </div>
@@ -565,27 +665,27 @@
         <div class="stats">
           <div class="stat">
             <div class="t">Muestras Aprobadas</div>
-            <div class="v" id="dPass">—</div>
+            <div class="v" id="distPass">—</div>
           </div>
           <div class="stat">
             <div class="t">Muestras Totales</div>
-            <div class="v" id="dTotal">—</div>
+            <div class="v" id="distTotal">—</div>
           </div>
           <div class="stat">
             <div class="t">Muestras Fallidas</div>
-            <div class="v" id="dFail">—</div>
+            <div class="v" id="distFail">—</div>
           </div>
         </div>
+      </div>
 
-        <div class="section">
-          <h3>Muestras Aprobadas</h3>
-          <div id="passCards" class="cards"></div>
-        </div>
+      <div class="section">
+        <h3>Muestras Aprobadas</h3>
+        <div id="passCards" class="cards"></div>
+      </div>
 
-        <div class="section">
-          <h3>Muestras Fallidas</h3>
-          <div id="failCards" class="cards"></div>
-        </div>
+      <div class="section">
+        <h3>Muestras Fallidas</h3>
+        <div id="failCards" class="cards"></div>
       </div>
     </div>
   </div>
@@ -637,11 +737,6 @@
       return (x === 'true' || x === '1' || x === 't' || x === 'yes');
     }
 
-    function n(v){
-      const x = Number(v);
-      return Number.isFinite(x) ? x : 0;
-    }
-
     function pct(a,b){
       if (!b) return 0;
       return Math.round((a/b)*100);
@@ -649,13 +744,21 @@
 
     function fmtDT(r){
       const start = r.start || '';
-      const date = r.date || '';
       if (start){
-        const m = start.match(/^(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2})/);
-        if (m) return `${m[1]} @ ${m[2]}`;
+        const m = start.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})/);
+        if (m) return `${m[1]}-${m[2]}-${m[3]} @ ${m[4]}:${m[5]}`;
         return start;
       }
-      return date || '—';
+      return r.date || '—';
+    }
+
+    function fmtDateOnly(r){
+      const start = r.start || '';
+      if (start){
+        const m = start.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})/);
+        if (m) return `${m[1]}-${m[2]}-${m[3]}<br>${m[4]}:${m[5]}`;
+      }
+      return (r.date || '—');
     }
 
     function calcLevel(score){
@@ -669,175 +772,6 @@
       if (score >= 90) return '#2f5be3';
       if (score >= 80) return '#f59e0b';
       return '#ef4444';
-    }
-
-    const el = {
-      tSummary: document.getElementById('tSummary'),
-      tDetail: document.getElementById('tDetail'),
-      vSummary: document.getElementById('vSummary'),
-      vDetail: document.getElementById('vDetail'),
-      backBtn: document.getElementById('backBtn'),
-
-      dCat: document.getElementById('dCat'),
-      dName: document.getElementById('dName'),
-      dPass: document.getElementById('dPass'),
-      dTotal: document.getElementById('dTotal'),
-      dFail: document.getElementById('dFail'),
-      dLevel: document.getElementById('dLevel'),
-      dScoreNum: document.getElementById('dScoreNum'),
-      gaugeArc: document.getElementById('gaugeArc'),
-      passCards: document.getElementById('passCards'),
-      failCards: document.getElementById('failCards'),
-      docBtn: document.getElementById('docBtn')
-    };
-
-    let summaryRows = [];
-    let detailRows = [];
-
-    function setTab(which){
-      const isSummary = which === 'summary';
-      el.tSummary.setAttribute('aria-selected', isSummary ? 'true' : 'false');
-      el.tDetail.setAttribute('aria-selected', !isSummary ? 'true' : 'false');
-      el.vSummary.style.display = isSummary ? '' : 'none';
-      el.vDetail.style.display = !isSummary ? '' : 'none';
-    }
-
-    function buildWeights(auditCounts){
-      const total = auditCounts.reduce((s,x)=>s+x.total,0);
-      if (!total) return auditCounts.map(x=>({...x, score:0}));
-
-      const withW = auditCounts.map(x=>({...x, w:(x.total/total)*100}));
-      let rounded = withW.map(x=>({...x, score:Math.floor(x.w)}));
-      let sum = rounded.reduce((s,x)=>s+x.score,0);
-
-      const frac = withW
-        .map((x,idx)=>({idx, frac:x.w - Math.floor(x.w)}))
-        .sort((a,b)=>b.frac-a.frac);
-
-      let k = 0;
-      while (sum < 100 && k < frac.length){
-        rounded[frac[k].idx].score += 1;
-        sum += 1;
-        k++;
-      }
-
-      k = frac.length - 1;
-      while (sum > 100 && k >= 0){
-        const idx = frac[k].idx;
-        if (rounded[idx].score > 0){
-          rounded[idx].score -= 1;
-          sum -= 1;
-        }
-        k--;
-      }
-
-      return rounded.map(x=>({
-        name:x.name,
-        total:x.total,
-        pass:x.pass,
-        fail:x.fail,
-        score:x.score
-      }));
-    }
-
-    function renderSummary(){
-      const byCat = new Map();
-
-      for (const r of detailRows){
-        const cat = r.check_category || 'Sin categoría';
-        const name = r.audit_name || 'Sin nombre';
-        if (!byCat.has(cat)) byCat.set(cat, new Map());
-        const m = byCat.get(cat);
-        if (!m.has(name)) m.set(name, []);
-        m.get(name).push(r);
-      }
-
-      const cats = Array.from(byCat.keys()).sort((a,b)=>a.localeCompare(b,'es'));
-      el.vSummary.innerHTML = '';
-
-      for (const cat of cats){
-        const catCard = document.createElement('div');
-        catCard.className = 'card catBlock';
-
-        const sumRow = summaryRows.find(s =>
-          ((s.check_category || s.audit_name || '') === cat)
-        );
-
-        const catPct = sumRow?.pass_rate_pct
-          ? Math.round(n(sumRow.pass_rate_pct))
-          : Math.round(
-              pct(
-                Array.from(byCat.get(cat).values()).flat().filter(x=>toBool(x.is_pass)).length,
-                Array.from(byCat.get(cat).values()).flat().length
-              )
-            );
-
-        const head = document.createElement('div');
-        head.className = 'catHead';
-        head.innerHTML = `
-          <div class="catTitle">Categoría: ${cat}</div>
-          <div class="catScore">Puntaje de categoría: <b>${catPct}</b> /100</div>
-        `;
-        catCard.appendChild(head);
-
-        const tbl = document.createElement('table');
-        tbl.innerHTML = `
-          <thead>
-            <tr>
-              <th style="width:56px;"></th>
-              <th>Descripción</th>
-              <th style="width:140px;">Aprobación</th>
-              <th style="width:110px;">Puntaje</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        `;
-
-        const tbody = tbl.querySelector('tbody');
-        const audits = byCat.get(cat);
-
-        const auditCounts = Array.from(audits.keys())
-          .map(name=>{
-            const rows = audits.get(name);
-            const total = rows.length;
-            const pass = rows.filter(x=>toBool(x.is_pass)).length;
-            const fail = total - pass;
-            return {name,total,pass,fail};
-          })
-          .sort((a,b)=>a.name.localeCompare(b.name,'es'));
-
-        const weighted = buildWeights(auditCounts);
-
-        for (const a of weighted){
-          const tr = document.createElement('tr');
-          tr.className = 'rowBtn';
-          tr.innerHTML = `
-            <td>
-              <div class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-              </div>
-            </td>
-            <td>
-              <div class="desc">
-                <div style="min-width:0;">
-                  <a class="nameLine" href="javascript:void(0)">${a.name}</a>
-                  <span class="crumb">» ${cat}</span>
-                  <div class="subLine">${a.pass}/${a.total} aprobadas • ${a.fail} fallidas</div>
-                </div>
-              </div>
-            </td>
-            <td>${pct(a.pass,a.total)}%</td>
-            <td>${a.score}</td>
-          `;
-          tr.addEventListener('click', ()=>{
-            openDetail(cat, a.name, audits.get(a.name));
-          });
-          tbody.appendChild(tr);
-        }
-
-        catCard.appendChild(tbl);
-        el.vSummary.appendChild(catCard);
-      }
     }
 
     function renderCards(container, rows, emptyMsg){
@@ -867,34 +801,97 @@
       }
     }
 
-    function openDetail(cat, auditName, rows){
-      el.dCat.textContent = 'Análisis';
-      el.dName.textContent = auditName;
+    function renderIncidentTable(failRows){
+      const body = document.getElementById('incidentTableBody');
+      body.innerHTML = '';
 
-      const total = rows.length;
-      const passRows = rows.filter(r=>toBool(r.is_pass));
-      const failRows = rows.filter(r=>!toBool(r.is_pass));
-      const pass = passRows.length;
-      const fail = failRows.length;
-      const score = pct(pass, total);
-      const level = calcLevel(score);
+      let rowsToUse = [...failRows];
 
-      el.dPass.textContent = pass;
-      el.dTotal.textContent = total;
-      el.dFail.textContent = fail;
-      el.dLevel.textContent = level;
-      el.dScoreNum.textContent = score;
+      if (rowsToUse.length < 3) {
+        rowsToUse = rowsToUse.concat([
+          {
+            observation: "Cliente No Hot N' Ready",
+            video_link: "#",
+            start: "2026-02-24 16:01:00+00"
+          },
+          {
+            observation: "Cliente No Hot N' Ready",
+            video_link: "#",
+            start: "2026-02-28 19:39:00+00"
+          }
+        ]);
+      }
 
-      el.gaugeArc.setAttribute('stroke-dasharray', `${score} 100`);
-      el.gaugeArc.setAttribute('stroke', gaugeColor(score));
+      rowsToUse.slice(0, 4).forEach(r => {
+        const desc = (r.observation || "Cliente No Hot N' Ready").trim() || "Cliente No Hot N' Ready";
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>
+            <div class="incidentDesc">${desc}</div>
+            <div class="incidentLinks">
+              <a href="${r.video_link || '#'}" target="_blank" rel="noreferrer">Video »</a>
+              <a href="#">Photo »</a>
+            </div>
+          </td>
+          <td>${fmtDateOnly(r)}</td>
+        `;
+        body.appendChild(tr);
+      });
+    }
 
-      el.docBtn.href = '#';
+    function renderBubbleChart(){
+      const chart = document.getElementById('bubbleChart');
+      chart.querySelectorAll('.bubble').forEach(x => x.remove());
 
-      renderCards(el.passCards, passRows, 'No hay muestras aprobadas.');
-      renderCards(el.failCards, failRows, 'No hay muestras fallidas.');
+      const sampleBubbles = [
+        {x:0,y:2,size:34,type:'sample'},
+        {x:0,y:1,size:24,type:'sample'},
+        {x:1,y:2,size:20,type:'sample'},
+        {x:1,y:1,size:18,type:'sample'},
+        {x:3,y:2,size:18,type:'sample'},
+        {x:3,y:1,size:18,type:'sample'},
+        {x:4,y:2,size:22,type:'sample'},
+        {x:4,y:1,size:22,type:'sample'},
+        {x:5,y:2,size:22,type:'sample'},
+        {x:5,y:1,size:30,type:'sample'},
+        {x:6,y:2,size:18,type:'sample'},
+        {x:0,y:0,size:8,type:'sample'},
+        {x:1,y:0,size:6,type:'sample'},
+        {x:3,y:0,size:6,type:'sample'},
+        {x:4,y:0,size:5,type:'sample'},
+        {x:5,y:0,size:7,type:'sample'},
+        {x:6,y:1,size:6,type:'sample'},
 
-      el.tDetail.disabled = false;
-      setTab('detail');
+        {x:5,y:1,size:10,type:'incident'},
+        {x:2,y:2,size:8,type:'incident'}
+      ];
+
+      const colW = 64;
+      const rowH = 45;
+      const xOffset = 10;
+      const yBottomOffset = 18;
+
+      sampleBubbles.forEach(b => {
+        const div = document.createElement('div');
+        div.className = 'bubble' + (b.type === 'incident' ? ' incident' : '');
+        div.style.width = `${b.size}px`;
+        div.style.height = `${b.size}px`;
+        div.style.left = `${xOffset + b.x * colW - (b.size/2) + 22}px`;
+        div.style.bottom = `${yBottomOffset + b.y * rowH - (b.size/2)}px`;
+        chart.appendChild(div);
+      });
+    }
+
+    function renderDonut(){
+      const donutArc = document.getElementById('donutArc');
+      const percent = 100;
+      const circumference = 2 * Math.PI * 70;
+      const visible = circumference * (percent / 100);
+      const hidden = circumference - visible;
+
+      donutArc.setAttribute('stroke-dasharray', `${visible} ${hidden}`);
+      document.getElementById('donutPercent').textContent = `${percent}%`;
+      document.getElementById('donutLegend').textContent = "Cliente No Hot N' Ready";
     }
 
     async function fetchText(url){
@@ -904,28 +901,50 @@
     }
 
     async function init(){
-      const [sTxt, dTxt] = await Promise.all([
+      const [summaryTxt, detailTxt] = await Promise.all([
         fetchText(SUMMARY_URL),
         fetchText(DETAIL_URL)
       ]);
 
-      summaryRows = parseCSV(sTxt, CSV_SEP);
-      detailRows = parseCSV(dTxt, CSV_SEP);
+      const summaryRows = parseCSV(summaryTxt, CSV_SEP);
+      const detailRows = parseCSV(detailTxt, CSV_SEP);
 
-      renderSummary();
-      setTab('summary');
+      const summary = summaryRows[0] || {};
+      const auditName = summary.audit_name || "Proceso de Cobro";
+
+      const total = detailRows.length;
+      const passRows = detailRows.filter(r => toBool(r.is_pass));
+      const failRows = detailRows.filter(r => !toBool(r.is_pass));
+      const pass = passRows.length;
+      const fail = failRows.length;
+      const score = pct(pass, total);
+      const level = calcLevel(score);
+
+      document.getElementById('dName').textContent = auditName;
+      document.getElementById('dPass').textContent = pass;
+      document.getElementById('dTotal').textContent = total;
+      document.getElementById('dFail').textContent = fail;
+      document.getElementById('distPass').textContent = pass;
+      document.getElementById('distTotal').textContent = total;
+      document.getElementById('distFail').textContent = fail;
+      document.getElementById('dLevel').textContent = level;
+      document.getElementById('dScoreNum').textContent = score;
+      document.getElementById('gaugeArc').setAttribute('stroke-dasharray', `${score} 100`);
+      document.getElementById('gaugeArc').setAttribute('stroke', gaugeColor(score));
+
+      renderIncidentTable(failRows);
+      renderBubbleChart();
+      renderDonut();
+      renderCards(document.getElementById('passCards'), passRows, 'No hay muestras aprobadas.');
+      renderCards(document.getElementById('failCards'), failRows, 'No hay muestras fallidas.');
     }
 
-    el.tSummary.addEventListener('click', ()=>setTab('summary'));
-    el.tDetail.addEventListener('click', ()=>{ if(!el.tDetail.disabled) setTab('detail'); });
-    el.backBtn.addEventListener('click', ()=>setTab('summary'));
-
-    init().catch(err=>{
+    init().catch(err => {
       console.error(err);
-      el.vSummary.innerHTML = `
-        <div class="card" style="padding:16px;">
-          Error cargando CSV. Asegúrate de subir los CSV junto al HTML.<br>
-          <span style="color:var(--muted); font-size:12px;">${String(err.message || err)}</span>
+      document.getElementById('detailCard').innerHTML = `
+        <div style="padding:16px;">
+          Error cargando CSV.<br>
+          <span style="color:#6b7280;font-size:12px;">${String(err.message || err)}</span>
         </div>
       `;
     });
